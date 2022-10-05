@@ -5,10 +5,10 @@ function getRandomIntInclusive(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
-  else{
-    return NaN;
-  }
+  return NaN;
 }
+
+getRandomIntInclusive(5, 8);
 
 //взято c https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 
@@ -16,3 +16,5 @@ function getRandomIntInclusive(min, max) {
 function checkMaxStringLength (string, maxLength) {
   return string.length <= maxLength;
 }
+
+checkMaxStringLength (20, 140);
