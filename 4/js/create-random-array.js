@@ -44,6 +44,6 @@ const getRandomDescription = function () {
 const getRandomPhotoDescription = function () {
   return Array.from({length: IMPORTANT_COUNT}, getRandomDescription);
 };
-getRandomPhotoDescription ();
+
 
 export {getRandomPhotoDescription};
