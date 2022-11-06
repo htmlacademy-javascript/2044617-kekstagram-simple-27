@@ -1,3 +1,3 @@
-import {getRandomPhotoDescription} from './create-random-array.js';
+import {getThumbnails} from './rendering-thumbnails.js';
 
-getRandomPhotoDescription ();
+getThumbnails();
