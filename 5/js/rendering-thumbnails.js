@@ -6,7 +6,7 @@ const picturesContainer = document.querySelector('.pictures');
 // шаблон изображения случайного пользователя
 const templatePicture = document.querySelector('#picture').content.querySelector('.picture');
 
-//создание массива с заполенными в них данными
+//создание массива с заполненными в него данными
 const arrayData = getRandomPhotoDescription();
 
 const getThumbnails = function() {
@@ -15,7 +15,7 @@ const getThumbnails = function() {
 
   const renderingListFragment = document.createDocumentFragment();
 
-  //Выбираем из массива нужные нам данные и записываем в фрагмент
+  //Выбираем из массива нужные нам данные и записываем во фрагмент
   arrayData.forEach(({url, description, likes, comments}) => {
     const photography = templatePicture.cloneNode(true);
     photography.querySelector('.picture__img').src = url;
