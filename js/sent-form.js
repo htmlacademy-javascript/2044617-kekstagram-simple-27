@@ -10,7 +10,7 @@ const closeUploadOverlayElement = document.querySelector('#upload-cancel');
 
 
 //Функция проверяет нажатия Esc и закрывает окно загрузки фото
-const onUploadOverlayEscKeydown = (evt) => {
+const onUploadOverlayEscKeydown = function(evt) {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     closeUploadOverlay();

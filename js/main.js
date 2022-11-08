@@ -1,4 +1,4 @@
 import {getThumbnails} from './rendering-thumbnails.js';
-import './sent-form';
+import './sent-form.js';
 
 getThumbnails();
