@@ -1,4 +1,4 @@
-import {isEscapeKey} from './util.js';
+import {isEscapeKey} from './utils.js';
 
 //const MIN_COMMENTH_LENGTH = 20;
 //const MAX_COMMENTH_LENGTH = 140;
