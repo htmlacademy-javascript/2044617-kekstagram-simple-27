@@ -9,11 +9,14 @@ const getRandomIntInclusive = function (min, max) {
 };
 
 //Функция для проверки максимальной длины строки:
-const checkMaxStringLength = function (string, maxLength) {
-  return string.length <= maxLength;
+const checkMaxStringLength = function (value, minLength, maxLength) {
+  return value.length >= minLength && value.length <= maxLength;
 };
 
 checkMaxStringLength ('20', '140');
+
+//Проверка нажатия клавиши Esc
+const isEscapeKey = (evt) => evt.key === 'Escape';
 
 
 //Функция, возвращающая элемент массива с рандомным индексом
@@ -21,4 +24,4 @@ const getRandomArrayElement = function (array) {
   return array[getRandomIntInclusive(0, array.length - 1)];
 };
 
-export {getRandomIntInclusive, getRandomArrayElement};
+export {getRandomIntInclusive, getRandomArrayElement, isEscapeKey, checkMaxStringLength};
