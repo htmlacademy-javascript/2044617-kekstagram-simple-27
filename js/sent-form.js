@@ -1,9 +1,7 @@
 import {isEscapeKey} from './utils.js';
+import {resetScaleInput} from './scale.js';
+import {resetEffets} from './effects.js';
 
-//const MIN_COMMENTH_LENGTH = 20;
-//const MAX_COMMENTH_LENGTH = 140;
-//const commentField = document.querySelector('.text__description');
-//const form = document.querySelector('.img-upload__form');
 const uploadFileInput = document.querySelector('#upload-file');
 const uploadOverlay = document.querySelector('.img-upload__overlay');
 const closeUploadOverlayElement = document.querySelector('#upload-cancel');
@@ -20,7 +18,8 @@ const onUploadOverlayEscKeydown = function(evt) {
 const openUploadOverlay = function () {
   uploadOverlay.classList.remove('hidden');
   document.body.classList.add('modal-open');
-
+  resetEffets();
+  resetScaleInput();
   document.addEventListener('keydown', onUploadOverlayEscKeydown);
 };
 
