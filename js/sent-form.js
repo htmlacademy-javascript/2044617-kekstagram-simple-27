@@ -1,5 +1,5 @@
 import {isEscapeKey} from './utils.js';
-import {resetScaleInput} from './scale.js';
+import {resetScaleInput} from './scaling.js';
 import {resetEffets} from './effects.js';
 
 const uploadFileInput = document.querySelector('#upload-file');
