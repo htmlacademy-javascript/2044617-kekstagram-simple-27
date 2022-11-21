@@ -90,6 +90,4 @@ const formSubmit = function (onSuccess, onFail) {
   });
 };
 
-formSubmit(closeUploadOverlay);
-
 export { formSubmit, onSuccessfulSending, onFailSending };

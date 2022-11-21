@@ -4,9 +4,6 @@ const picturesContainer = document.querySelector('.pictures');
 // шаблон изображения случайного пользователя
 const templatePicture = document.querySelector('#picture').content.querySelector('.picture');
 
-//создание массива с заполненными в него данными
-/* const arrayData = getRandomPhotoDescription(); */
-
 //функция с данными, которые прислал сервер
 
 const getThumbnails = function(data) {
