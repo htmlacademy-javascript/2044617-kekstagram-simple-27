@@ -4,11 +4,9 @@ import { getData } from './fetch.js';
 import './sent-form.js';
 import './scaling.js';
 import './effects.js';
-
+import './loading-img.js';
 
 formSubmit(onSuccessfulSending, onFailSending);
 
 //Вызов функции для получения фото других пользователей
-getData((photos) => {
-  getThumbnails(photos);
-});
+getData(getThumbnails);

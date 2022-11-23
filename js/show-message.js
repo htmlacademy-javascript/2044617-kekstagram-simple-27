@@ -33,6 +33,7 @@ function closeMessage() {
   message.remove();
   document.removeEventListener('keydown', onMessageEscKeydown);
   document.removeEventListener('click', onWindowClick);
+  document.body.classList.remove('special-class');
 }
 
 //Добавление окна с сообщением при удачной загрузке изображения, добавление обработчиков
@@ -47,6 +48,7 @@ const getSuccessMessage = function () {
 //Добавление окна с сообщением при ошибке, добавление обработчиков
 const getErrorMessage = function () {
   message = errorMessage;
+  document.body.classList.add('special-class');
   document.body.append(errorMessage);
   errorButton.addEventListener('click', closeMessage);
   document.addEventListener('keydown', onMessageEscKeydown);

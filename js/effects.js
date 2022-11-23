@@ -51,15 +51,15 @@ const EFFECTS = [
 const DEFAULT_EFFECT = EFFECTS[0];
 const image = document.querySelector('.img-upload__preview img');
 const form = document.querySelector('.img-upload__form');
-
+const sliderDefault = document.querySelector( '.effect-level' );
 const sliderElement = document.querySelector('.effect-level__slider');
-const effectLevelElemet = document.querySelector('.effect-level__value');
+const effectLevelElement = document.querySelector('.effect-level__value');
 
 let chosenEffect = DEFAULT_EFFECT;
 
-const isDefault = function () {
+function isDefault() {
   return chosenEffect === DEFAULT_EFFECT;
-};
+}
 
 noUiSlider.create(sliderElement, {
   range: {
@@ -71,8 +71,9 @@ noUiSlider.create(sliderElement, {
   connect: 'lower',
 },);
 
-const updateSlider = function () {
-  sliderElement.classList.remove('hidden');
+const updateSlider = () => {
+  sliderDefault.classList.remove('hidden');
+  sliderElement.removeAttribute('disabled');
 
   sliderElement.noUiSlider.updateOptions({
     range: {
@@ -84,18 +85,20 @@ const updateSlider = function () {
   });
 
   if (isDefault()) {
-    sliderElement.classList.add('hidden');
-    image.style.filter = '';
+    sliderDefault.classList.add( 'hidden' );
+    sliderElement.setAttribute( 'disabled', true );
+    effectLevelElement.value = '';
     image.className = '';
+    image.style.filter = '';
   }
 };
 
-const resetEffets = function () {
+const resetEffets = () => {
   chosenEffect = DEFAULT_EFFECT;
   updateSlider();
 };
 
-const onFormChange = function (evt) {
+const onFormChange = (evt) => {
   if (!evt.target.classList.contains('effects__radio')) {
     return;
   }
@@ -109,8 +112,8 @@ const onFormChange = function (evt) {
 form.addEventListener ('change', onFormChange);
 
 sliderElement.noUiSlider.on('update', () => {
-  effectLevelElemet.value = sliderElement.noUiSlider.get();
-  image.style.filter = `${chosenEffect.filter}(${effectLevelElemet.value}${chosenEffect.unit})`;
+  effectLevelElement.value = sliderElement.noUiSlider.get();
+  image.style.filter = `${chosenEffect.filter}(${effectLevelElement.value}${chosenEffect.unit})`;
 });
 
 export {resetEffets};

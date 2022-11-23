@@ -30,12 +30,14 @@ const openUploadOverlay = function () {
 //Функция закрывает окно загрузки фото
 
 function closeUploadOverlay() {
-  uploadOverlay.classList.add('hidden');
-  document.body.classList.remove('modal-open');
+  if (!document.body.classList.contains('special-class')) {
+    uploadOverlay.classList.add('hidden');
+    document.body.classList.remove('modal-open');
 
-  document.removeEventListener('keydown', onUploadOverlayEscKeydown);
-  uploadFileInput.value = '';
-  commentField.value = '';
+    document.removeEventListener('keydown', onUploadOverlayEscKeydown);
+    uploadFileInput.value = '';
+    commentField.value = '';
+  }
 }
 
 const onSuccessfulSending = function () {
@@ -59,31 +61,23 @@ closeUploadOverlayElement.addEventListener('click', () => {
   closeUploadOverlay();
 });
 
-const blockSubmitButton = function () {
-  submitButton.disabled = true;
-  submitButton.textContent = 'Публикую...';
-};
-
-const unblockSubmitButton = function () {
-  submitButton.disabled = false;
-  submitButton.textContent = 'Опубликовать';
-};
-
-
 // функция отправки формы
 const formSubmit = function (onSuccess, onFail) {
   form.addEventListener('submit', (evt) => {
     evt.preventDefault();
-
-    blockSubmitButton();
+    const submitHandler = evt.target.querySelector('[type="submit"]');
+    submitButton.textContent = 'Публикую...';
+    submitHandler.setAttribute('disabled', 'disabled');
     sendData(
       () => {
         onSuccess();
-        unblockSubmitButton();
+        submitHandler.removeAttribute('disabled');
+        submitButton.textContent = 'Опубликовать';
       },
       () => {
         onFail();
-        unblockSubmitButton();
+        submitHandler.removeAttribute('disabled');
+        submitButton.textContent = 'Опубликовать';
       },
       new FormData(evt.target),
     );
