@@ -57,9 +57,7 @@ const effectLevelElement = document.querySelector('.effect-level__value');
 
 let chosenEffect = DEFAULT_EFFECT;
 
-function isDefault() {
-  return chosenEffect === DEFAULT_EFFECT;
-}
+const isDefault = () => chosenEffect === DEFAULT_EFFECT;
 
 noUiSlider.create(sliderElement, {
   range: {
@@ -93,7 +91,7 @@ const updateSlider = () => {
   }
 };
 
-const resetEffets = () => {
+const resetEffects = () => {
   chosenEffect = DEFAULT_EFFECT;
   updateSlider();
 };
@@ -116,4 +114,4 @@ sliderElement.noUiSlider.on('update', () => {
   image.style.filter = `${chosenEffect.filter}(${effectLevelElement.value}${chosenEffect.unit})`;
 });
 
-export {resetEffets};
+export {resetEffects};

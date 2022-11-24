@@ -1,6 +1,6 @@
 import { isEscapeKey } from './utils.js';
 import { resetScaleInput } from './scaling.js';
-import { resetEffets } from './effects.js';
+import { resetEffects } from './effects.js';
 import { getSuccessMessage, getErrorMessage } from './show-message.js';
 import { sendData } from './fetch.js';
 
@@ -12,17 +12,17 @@ const commentField = document.querySelector('.text__description');
 const submitButton = document.querySelector('.img-upload__submit');
 
 //Функция проверяет нажатие Esc и закрывает окно загрузки фото
-const onUploadOverlayEscKeydown = function (evt) {
+const onUploadOverlayEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     closeUploadOverlay();
   }
 };
 //Функция открывает окно загрузки фото
-const openUploadOverlay = function () {
+const openUploadOverlay = () => {
   uploadOverlay.classList.remove('hidden');
   document.body.classList.add('modal-open');
-  resetEffets();
+  resetEffects();
   resetScaleInput();
   document.addEventListener('keydown', onUploadOverlayEscKeydown);
 };
@@ -40,14 +40,14 @@ function closeUploadOverlay() {
   }
 }
 
-const onSuccessfulSending = function () {
+const onSuccessfulSending = () => {
   closeUploadOverlay();
   getSuccessMessage();
-  resetEffets();
+  resetEffects();
   resetScaleInput();
 };
 
-const onFailSending = function () {
+const onFailSending = () => {
   getErrorMessage();
 };
 
@@ -62,7 +62,7 @@ closeUploadOverlayElement.addEventListener('click', () => {
 });
 
 // функция отправки формы
-const formSubmit = function (onSuccess, onFail) {
+const formSubmit = (onSuccess, onFail) => {
   form.addEventListener('submit', (evt) => {
     evt.preventDefault();
     const submitHandler = evt.target.querySelector('[type="submit"]');
